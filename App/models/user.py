@@ -33,9 +33,6 @@ class RegularUser(User):
                           backref=db.backref('regular_users', lazy=True))  # sets up a relationship to competitions which references Regular User
     
     def register_comp(self):
-
-    
-
     def unregister_comp(self):
 
     def __repr__(self):
@@ -72,4 +69,4 @@ class Results(db.Model):
     competition_id = db.Column(db.Integer, db.ForeignKey('competitions.id') nullable=False)
 
     def view_results():
-        
+
