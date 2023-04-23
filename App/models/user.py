@@ -30,30 +30,8 @@ class RegularUser(User):
     __tablename__ = 'regular_user'
     competitions = db.relationship(
     'Competitions', secondary='user_competition',
-                          backref=db.backref('regular_users', lazy=True))  # sets up a relationship to competitions which references Regular User
+                          backref=db.backref('regular_users', lazy=True))  # sets up a relationship to competitions which references Regular
     
-    def register_comp(self):
-    def unregister_comp(self):
-
-    def __repr__(self):
-        return f'<RegularUser {self.id} : {self.username} - {self.email}>'
-
-class AdminUser(User):
-    __tablename__ = 'admin'
-    def get_json(self):
-        return {
-        "id": self.id,
-        "username": self.username,
-        "email": self.email,
-        "role": 'admin'
-        }
-
-    def edit_competition(self):
-    def edit_results(self):
-
-    def __repr__(self):
-        return f'<Admin {self.id} : {self.username} - {self.email}>'
-
 class Competitions(db.Model):
     __tablename__ = 'competitions'
     id = db.Column(db.Integer, primary_key=True)
